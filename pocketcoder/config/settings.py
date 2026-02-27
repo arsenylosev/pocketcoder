@@ -332,11 +332,13 @@ def run_wizard() -> dict[str, Any] | None:
         if not url:
             print("URL is required")
             return None
+        api_key = input("Enter API key (optional, press Enter to skip): ").strip()
         config["provider"] = {
             "name": "custom",
             "type": "openai_compat",
             "base_url": url,
             "default_model": "",
+            "api_key": api_key if api_key else None,
         }
     else:
         config["provider"] = {
